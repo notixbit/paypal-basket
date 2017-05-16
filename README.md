@@ -565,7 +565,7 @@ Make sure ```norequest``` is *true*.
 
 ```javascript
 import paypal from 'paypal-rest-sdk';
-import { Basket, Product } from 'paypal-basket'
+import { Basket, Product } from 'paypal-basket';
 
 /* Configure external paypal sdk */
 paypal.configure({
