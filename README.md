@@ -37,10 +37,10 @@ Features:
   * [Make](#make)
   * [NPM](#npm)
 * [Unit-Tests](#unit-tests)
-  * [Make](#make)
-  * [NPM](#npm)
+  * [Make](#make-1)
+  * [NPM](#npm-1)
 * [How to install](#how-to-install)
-* [Setup](#setup-install)
+* [Setup](#setup--install)
 * [License](#license)
 
 ---
