@@ -525,7 +525,7 @@ let sessionxyzBasket = new Basket({
 /* 
   Now let the customer add/del 
   some products to/from their basket.
-  Presumeble by a website
+  Presumably via website
 */
 sessionxyzBasket.add(products['davidguettalisten'])
 .then(sessionxyzBasket.add(products['michaeljacksonworld']))
