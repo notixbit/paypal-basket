@@ -2,6 +2,7 @@
 # paypal-basket
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Burnett01/paypal-basket/master/LICENSE) [![Build Status](https://travis-ci.org/Burnett01/paypal-basket.svg?branch=master)](https://travis-ci.org/Burnett01/paypal-basket) [![npm version](https://badge.fury.io/js/paypal-basket.svg?ver=88)](https://badge.fury.io/js/paypal-basket)
 
+<img src="http://i.imgur.com/qnXIWQ6.png" align="right"/>
 
 A simple basket & product manager for the [PayPal-node SDK](https://github.com/paypal/PayPal-node-SDK/).
 
