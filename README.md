@@ -455,6 +455,8 @@ demoBasket.sell( { 'currency': 'USD', 'norequest': true } )
 
 ## Examples
 
+Check out the ['examples' folder for ES5 + ES6 samples](../master/examples)
+
 ### Example 1 (Music Store) ES6
 In this example paypal-basket will craft the manifest and request the actual payment by using the internal Paypal-SDK.
 
