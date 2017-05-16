@@ -41,6 +41,7 @@ Features:
   * [NPM](#npm-1)
 * [How to install](#how-to-install)
 * [Setup](#setup--install)
+* [Contributing](#contributing)
 * [License](#license)
 
 ---
@@ -645,7 +646,7 @@ demoBasket.sell({
 
 ## Unit-Tests
 
-The testing-framework used in this module is [Mocha](https://github.com/mochajs/mocha) with the BDD / TDD assertion library [Chai](https://github.com/chaijs/chai).
+The testing-framework used by this module is [Mocha](https://github.com/mochajs/mocha) with the BDD / TDD assertion library [Chai](https://github.com/chaijs/chai).
 
 Various tests are performed to make sure this module runs as smoothly as possible.
 
@@ -711,6 +712,12 @@ paypal.configure({
 
 /* Now check examples above */
 ```
+
+---
+
+## Contributing
+
+You're very welcome and free to contribute. Thank you.
 
 ---
 
