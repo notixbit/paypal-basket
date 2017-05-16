@@ -1,0 +1,59 @@
+{
+  "name": "paypal-basket",
+  "version": "1.0.0",
+  "description": "A simple basket & product manager for the PayPal-node SDK",
+  "keywords": [
+    "paypal",
+    "basket",
+    "product",
+    "manager",
+    "lightweight",
+    "es6",
+    "promise",
+    "async",
+    "tests",
+    "node",
+    "ecommerce",
+    "shop",
+    "sdk"
+  ],
+  "author": {
+    "name": "Steven Agyekum",
+    "email": "agyekum@posteo.de",
+    "url": "https://github.com/Burnett01/paypal-basket"
+  },
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "Burnett01",
+      "email": "agyekum@posteo.de"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Burnett01/paypal-basket.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Burnett01/paypal-basket/issues"
+  },
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "babel lib -d dist",
+    "test": "mocha --compilers js:babel-register --reporter list",
+    "start": "babel-node lib/api.js",
+    "serve": "node dist/api.js",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "paypal-rest-sdk": "^1.7.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
+  }
+}
