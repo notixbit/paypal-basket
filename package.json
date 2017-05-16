@@ -1,6 +1,6 @@
 {
   "name": "paypal-basket",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple basket & product manager for the PayPal-node SDK",
   "keywords": [
     "paypal",
@@ -40,8 +40,7 @@
   "scripts": {
     "build": "babel lib -d dist",
     "test": "mocha --compilers js:babel-register --reporter list",
-    "start": "babel-node lib/api.js",
-    "serve": "node dist/api.js",
+    "start": "babel-node examples/music-store.js",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
