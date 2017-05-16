@@ -576,13 +576,13 @@ paypal.configure({
 
 /* Some sample products */
 
-let demoProduct1 = new Product(
+let demoProduct1 = new Product({
   sku: 'demoproduct1',
   name: 'Demo Product 1',
   price: 15.00
 });
 
-let demoProduct2 = new Product(
+let demoProduct2 = new Product({
   sku: 'demoproduct2',
   name: 'Demo Product 2',
   price: 6.53
@@ -613,7 +613,7 @@ console.log('Current total is: $' + demoBasket.total);
 */
 
 /* Promise invocation */
-sessionxyzBasket.sell({ 
+demoBasket.sell({ 
   currency: 'USD', norequest: true
 })
 .then( manifest => {
