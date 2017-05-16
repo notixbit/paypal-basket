@@ -113,7 +113,6 @@ Product(
 | sku | Stock Keeping Unit / short product name
 | name | Product name
 | price | Product price (float) (eg. 5.00)
-|
 
 ---
 
