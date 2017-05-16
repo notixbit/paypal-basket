@@ -114,6 +114,7 @@ Product(
 | name | Product name
 | price | Product price (float) (eg. 5.00)
 |
+
 ---
 
 ## Function reference:
