@@ -85,6 +85,7 @@ describe('Paypal Basket [TEST]', () => {
       expect(basket.products[0].price).to.equal(product.price);
       expect(basket.products[0].currency).to.equal('USD');
       expect(basket.products[0].quantity).to.equal(1);
+      expect(basket.total).to.equal(5.00);
 
       done();
 
@@ -98,6 +99,7 @@ describe('Paypal Basket [TEST]', () => {
 
       expect(err).to.be.null;
       expect(basket.products).to.be.empty;
+      expect(basket.total).to.equal(0.00);
 
       done();
 
@@ -116,6 +118,7 @@ describe('Paypal Basket [TEST]', () => {
       expect(basket.products[0].price).to.equal(product.price);
       expect(basket.products[0].currency).to.equal('USD');
       expect(basket.products[0].quantity).to.equal(10);
+      expect(basket.total).to.equal(50.00);
     
       done();
 
