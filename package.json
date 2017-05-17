@@ -1,6 +1,6 @@
 {
   "name": "paypal-basket",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple basket & product manager for the PayPal-node SDK",
   "keywords": [
     "paypal",
