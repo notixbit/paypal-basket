@@ -750,11 +750,11 @@ The testing-framework used by this module is [Mocha](https://github.com/mochajs/
 
 Various tests are performed to make sure this module runs as smoothly as possible.
 
-* test/test.default.js `Performs 4 tests` | [Source](../master/test/test.default.js)
+* test/test.default.js `Performs 6 tests` | [Source](../master/test/test.default.js)
 
 Output using [Mocha](https://github.com/mochajs/mocha) `spec` reporter:   
 
-<img src="http://i.imgur.com/Up5GIM9.png" />
+<img src="http://i.imgur.com/kYxdF5q.png" />
 
 Default reporter: `list`
 
