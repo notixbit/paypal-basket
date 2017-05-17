@@ -560,7 +560,7 @@ for( let index in albums ) {
 }
 
 /* 
-  From here on you can access a product like:
+  At this point you can access a product like:
 
   products['michaeljacksonworld']
   products['davidguettalisten']
