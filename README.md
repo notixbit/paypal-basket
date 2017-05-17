@@ -1,5 +1,6 @@
 
 # paypal-basket
+
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Burnett01/paypal-basket/master/LICENSE) [![Build Status](https://travis-ci.org/Burnett01/paypal-basket.svg?branch=master)](https://travis-ci.org/Burnett01/paypal-basket) [![npm version](https://badge.fury.io/js/paypal-basket.svg?ver=88)](https://badge.fury.io/js/paypal-basket)
 
 <img src="http://i.imgur.com/qnXIWQ6.png" align="right"/>
@@ -35,14 +36,13 @@ Features:
 * [Examples](#examples)
   * [Example 1 (Music Store) ES6](#example-1-music-store-es6)
   * [Example 2 (Manual payment-request) ES6](#example-2-manual-payment-request-es6)
+* [Setup / Install](#setup-install)
 * [Build](#build)
   * [Make](#make)
   * [NPM](#npm)
 * [Unit-Tests](#unit-tests)
   * [Make](#make-1)
   * [NPM](#npm-1)
-* [How to install](#how-to-install)
-* [Setup](#setup--install)
 * [Contributing](#contributing)
 * [License](#license)
 
@@ -685,42 +685,6 @@ demoBasket.sell({
 
 ---
 
-## Build
-
-### Make
-
-```make build```
-
-### NPM
-
-```npm run build```
-
----
-
-## Unit-Tests
-
-The testing-framework used by this module is [Mocha](https://github.com/mochajs/mocha) with the BDD / TDD assertion library [Chai](https://github.com/chaijs/chai).
-
-Various tests are performed to make sure this module runs as smoothly as possible.
-
-* test/test.default.js `Performs 4 tests` | [Source](../master/test/test.default.js)
-
-Output using [Mocha](https://github.com/mochajs/mocha) `spec` reporter:   
-
-<img src="http://i.imgur.com/Up5GIM9.png" />
-
-Default reporter: `list`
-
-### Make
-
-```make test```
-
-### NPM
-
-```npm test```
-
----
-
 ## Setup / Install
 
 Use `npm install paypal-rest-sdk`
@@ -768,6 +732,42 @@ paypal.configure({
 
 ---
 
+## Build
+
+### Make
+
+```make build```
+
+### NPM
+
+```npm run build```
+
+---
+
+## Unit-Tests
+
+The testing-framework used by this module is [Mocha](https://github.com/mochajs/mocha) with the BDD / TDD assertion library [Chai](https://github.com/chaijs/chai).
+
+Various tests are performed to make sure this module runs as smoothly as possible.
+
+* test/test.default.js `Performs 4 tests` | [Source](../master/test/test.default.js)
+
+Output using [Mocha](https://github.com/mochajs/mocha) `spec` reporter:   
+
+<img src="http://i.imgur.com/Up5GIM9.png" />
+
+Default reporter: `list`
+
+### Make
+
+```make test```
+
+### NPM
+
+```npm test```
+
+---
+
 ## Contributing
 
 You're very welcome and free to contribute. Thank you.
@@ -775,4 +775,5 @@ You're very welcome and free to contribute. Thank you.
 ---
 
 ## License
+
 [MIT](../master/LICENSE.MD)
