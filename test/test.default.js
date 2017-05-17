@@ -85,7 +85,7 @@ describe('Paypal Basket [TEST]', () => {
       expect(basket.products[0].price).to.equal(product.price);
       expect(basket.products[0].currency).to.equal('USD');
       expect(basket.products[0].quantity).to.equal(1);
-    
+
       done();
 
     });
@@ -99,6 +99,24 @@ describe('Paypal Basket [TEST]', () => {
       expect(err).to.be.null;
       expect(basket.products).to.be.empty;
 
+      done();
+
+    });
+    
+  });
+
+  it('adds the product 10x to the basket', done => {
+
+    basket.add( product, 10, (err, ok) => {
+
+      expect(err).to.be.null;
+      expect(basket.products).to.be.a('array');
+      expect(basket.products[0].sku).to.equal(product.sku);
+      expect(basket.products[0].name).to.equal(product.name);
+      expect(basket.products[0].price).to.equal(product.price);
+      expect(basket.products[0].currency).to.equal('USD');
+      expect(basket.products[0].quantity).to.equal(10);
+    
       done();
 
     });
