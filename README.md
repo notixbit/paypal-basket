@@ -27,6 +27,7 @@ Features:
   * [Creating a product](#creating-a-product)
   * [Adding products to a basket](#adding-products-to-a-basket)
   * [Deleting products from a basket](#deleting-products-from-a-basket)
+  * [Empty a basket](#empty-a-basket)
   * [Selling a basket (crafting manifest / payment request)](#selling-a-basket-crafting-manifest-payment-request)
     * [Auto payment-request processing](#auto-payment-request-processing)
     * [Manual payment-request processing](#manual-payment-request-processing)
@@ -67,8 +68,9 @@ Basket(
     total:    Number=0.00,
 
     /* Methods */
-    add:  [Product, function(class ErrorClass err, null ok) cb] | Promise
+    add:  [Product, Number=amount, function(class ErrorClass err, null ok) cb] | Promise
     del:  [Product, function(class ErrorClass err, null ok) cb] | Promise
+    clear:  [function(class ErrorClass err, null ok) cb] | Promise
     sell: [Object {
         currency: String='USD',
         description: String='',
@@ -212,6 +214,11 @@ demoBasket.add( demoProduct )
   .then(demoBasket.add( demoProduct ));
   .then(demoBasket.add( demoProduct ));
 
+
+/* Adding a specific amount */
+demoBasket.add( demoProduct, 10 );
+
+
 //-------------------
 
 //=> ES5
@@ -237,6 +244,9 @@ demoBasket.add( demoProduct )
   .then(demoBasket.add( demoProduct ))
   .then(demoBasket.add( demoProduct ));
   .then(demoBasket.add( demoProduct ));
+
+/* Adding a specific amount */
+demoBasket.add( demoProduct, 10 );
 ```
 
 ---
@@ -293,6 +303,48 @@ demoBasket.del( demoProduct )
   .then(demoBasket.del( demoProduct ))
   .then(demoBasket.del( demoProduct ));
   .then(demoBasket.del( demoProduct ));
+```
+
+---
+
+### Empty a basket
+
+```javascript
+//=> ES6
+
+/* Default invocation */
+demoBasket.clear();
+
+/* Nodeback invocation */
+demoBasket.clear( (err, ok) => {
+  if(err) { return console.log(err); }
+
+  console.log('Basket has been cleared!');
+});
+
+/* Promise invocation */
+demoBasket.clear()
+  .then( ok => console.log('Basket has been cleared!'); )
+  .catch( err => console.log(err); );
+
+//-------------------
+
+//=> ES5
+
+/* Default invocation */
+demoBasket.clear());
+
+/* Nodeback invocation */
+demoBasket.clear( function(err, ok) {
+  if(err) { return console.log(err); }
+
+  console.log('Basket has been cleared!');
+});
+
+/* Promised based invocation */
+demoBasket.clear()
+  .then( function(ok) { console.log('Basket has been cleared!'); } )
+  .catch( function(err) { console.log(err); } );
 ```
 
 ---
