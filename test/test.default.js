@@ -126,4 +126,18 @@ describe('Paypal Basket [TEST]', () => {
     
   });
 
+  it('deletes all products from the basket', done => {
+
+    basket.clear( (err, ok) => {
+
+      expect(err).to.be.null;
+      expect(basket.products).to.be.empty;
+      expect(basket.total).to.equal(0.00);
+
+      done();
+
+    });
+    
+  });
+
 });
