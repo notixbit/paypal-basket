@@ -7,7 +7,7 @@
 
 A simple basket & product manager for the [PayPal-node SDK](https://github.com/paypal/PayPal-node-SDK/).
 
-This module will assist you in managing your products and baskets, in order to craft the Paypal payment-request (JSON doc).<br>
+This module will assist you in managing your products and baskets, in order to craft the Paypal payment request (JSON doc).<br>
 Ultimatively it can also request the actual PayPal payment details for you.
 
 Features:
@@ -129,8 +129,8 @@ Product(
 | |  | Required | 
 | ------ | ----------- | ------ |
 | label | Description of the basket (eg. Mike's basket) | Yes |
-| urls | ``return_url`` = Url to return on successfull payment | Yes |
-|  |``cancel_url`` = Url to return on erronous payment |
+| urls | ``return_url`` = Url to return to, on successfull payment | Yes |
+|  |``cancel_url`` = Url to return to, on erroneous payment |
 
 ```javascript
 //=> ES6
