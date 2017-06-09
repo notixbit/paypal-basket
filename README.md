@@ -421,6 +421,8 @@ demoBasket.sell( { 'currency': 'USD' } )
 #### Manual payment-request processing:
 
 ```javascript
+import paypal from 'paypal-rest-sdk';
+
 //=> ES6
 
 /* -> Nodeback invocation */
@@ -515,11 +517,10 @@ Check out the ['examples' folder for ES5 + ES6 samples](../master/examples)
 In this example paypal-basket will craft the manifest and request the actual payment by using the internal Paypal-SDK.
 
 ```javascript
-import paypal from 'paypal-rest-sdk';
-import { Basket, Product } from 'paypal-basket'
+import { Paypal, Basket, Product } from 'paypal-basket'
 
 /* Configure paypal sdk */
-paypal.configure({
+Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
@@ -687,21 +688,18 @@ demoBasket.sell({
 
 ## Setup / Install
 
-Use `npm install paypal-rest-sdk`
-
 Use `npm install paypal-basket` 
 
 ```javascript
 //=> ES6
-import paypal from 'paypal-rest-sdk';
-import { Basket, Product } from 'paypal-basket';
+import { Paypal, Basket, Product } from 'paypal-basket';
 
 /*
   Configure paypal SDK
   Grab your developer details here:
   https://developer.paypal.com/
 */
-paypal.configure({
+Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
@@ -712,7 +710,7 @@ paypal.configure({
 //-------------------
 
 //=> ES5
-var paypal = require('paypal-rest-sdk')
+var Paypal = require('paypal-basket').Paypal
   , Basket = require('paypal-basket').Basket
   , Product = require('paypal-basket').Product;
 
@@ -721,7 +719,7 @@ var paypal = require('paypal-rest-sdk')
   Grab your developer details here:
   https://developer.paypal.com/
 */
-paypal.configure({
+Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
