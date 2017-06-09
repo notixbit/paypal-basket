@@ -22,11 +22,10 @@
 *
 */
 
-import paypal from 'paypal-rest-sdk';
-import { Basket, Product } from 'paypal-basket';
+import { Paypal, Basket, Product } from 'paypal-basket';
 
 /* Configure paypal sdk */
-paypal.configure({
+Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
