@@ -22,12 +22,12 @@
 *
 */
 
-var paypal = require('paypal-rest-sdk')
+var Paypal = require('paypal-basket').Paypal
   , Basket = require('paypal-basket').Basket
   , Product = require('paypal-basket').Product;
 
 /* Configure paypal sdk */
-paypal.configure({
+Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
