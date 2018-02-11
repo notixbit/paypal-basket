@@ -774,4 +774,4 @@ You're very welcome and free to contribute. Thank you.
 
 ## License
 
-[MIT](../master/LICENSE.MD)
+[MIT](LICENSE)
