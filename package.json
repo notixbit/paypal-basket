@@ -40,7 +40,6 @@
   "scripts": {
     "build": "babel lib -d dist",
     "test": "mocha --compilers js:babel-register --reporter list",
-    "start": "babel-node examples/music-store.js",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
