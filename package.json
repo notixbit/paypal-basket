@@ -1,5 +1,5 @@
 {
-  "name": "paypal-basket",
+  "name": "@burnett01/paypal-basket",
   "version": "1.0.7",
   "description": "A simple basket & product manager for the PayPal-node SDK",
   "keywords": [
@@ -31,7 +31,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Burnett01/paypal-basket.git"
+    "url": "ssh://git@github.com/Burnett01/paypal-basket.git"
   },
   "bugs": {
     "url": "https://github.com/Burnett01/paypal-basket/issues"
