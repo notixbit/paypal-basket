@@ -4,7 +4,7 @@
 * Product:      Paypal Basket
 * Description:  A simple basket & product manager for the PayPal-node-SDK
 *
-* Copyright (c) 2017-2019 Steven Agyekum <agyekum@posteo.de>
+* Copyright (c) 2017-2020 Steven Agyekum <agyekum@posteo.de>
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 * and associated documentation files (the "Software"), to deal in the Software without restriction,
