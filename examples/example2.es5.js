@@ -23,15 +23,15 @@
 */
 
 var paypal = require('paypal-rest-sdk')
-  , Basket = require('paypal-basket').Basket
-  , Product = require('paypal-basket').Product;
+  , Basket = require('@burnett01/paypal-basket').Basket
+  , Product = require('@burnett01/paypal-basket').Product
 
 /* Configure external paypal sdk */
 paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
-});
+})
 
 /* Some sample products */
 
@@ -39,13 +39,13 @@ var demoProduct1 = new Product({
   sku: 'demoproduct1',
   name: 'Demo Product 1',
   price: 15.00
-});
+})
 
 var demoProduct2 = new Product({
   sku: 'demoproduct2',
   name: 'Demo Product 2',
   price: 6.53
-});
+})
 
 /* Create a basket (eg. for a customer) */
 var demoBasket = new Basket({
@@ -54,17 +54,17 @@ var demoBasket = new Basket({
     return_url: 'http://return.url',
     cancel_url: 'http://cancel.url'
   }
-});
+})
 
 
 /* 
   Add our demo products
 */
-demoBasket.add(demoProduct1);
-demoBasket.add(demoProduct2);
+demoBasket.add(demoProduct1)
+demoBasket.add(demoProduct2)
 
 /* Print current total */
-console.log('Current total is: $' + demoBasket.total);
+console.log('Current total is: $' + demoBasket.total)
 
 /*
   Now sell the basket (generate manifest)
@@ -77,10 +77,10 @@ demoBasket.sell({
 })
 .then( function(manifest) {
   paypal.payment.create(manifest, (error, payment) => {
-    if(error){ throw error; }
+    if(error){ throw error }
 
-    console.log("Payment Response:");
-    console.log(payment);
-  });
+    console.log("Payment Response:")
+    console.log(payment)
+  })
 })
-.catch( function(err) { console.log(err) } );
+.catch( function(err) { console.log(err) } )

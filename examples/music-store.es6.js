@@ -22,14 +22,14 @@
 *
 */
 
-import { Paypal, Basket, Product } from 'paypal-basket';
+import { Paypal, Basket, Product } from '@burnett01/paypal-basket'
 
 /* Configure paypal sdk */
 Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
-});
+})
 
 /* A JSON collection of music albums */
 let albums = [
@@ -48,21 +48,21 @@ let albums = [
     "name": "Simply Red - Thrill me",
     "price": "10.00"
   }
-];
+]
 
 /* 
   A collection of music products
   to contain the actual album products
 */
-let products = {};
+let products = {}
 
 /* 
   Create products from albums 
   and push to collection
 */
 for( let index in albums ) {
-  let album = albums[index];
-  products[album.sku] = new Product(album);
+  let album = albums[index]
+  products[album.sku] = new Product(album)
 }
 
 /* 
@@ -79,7 +79,7 @@ let sessionxyzBasket = new Basket({
     return_url: 'http://return.url',
     cancel_url: 'http://cancel.url'
   }
-});
+})
 
 
 /* 
@@ -90,10 +90,10 @@ let sessionxyzBasket = new Basket({
 sessionxyzBasket.add(products['davidguettalisten'])
 .then(sessionxyzBasket.add(products['michaeljacksonworld']))
 .then(sessionxyzBasket.add(products['simplyredthrillme']))
-.then(sessionxyzBasket.del(products['davidguettalisten']));
+.then(sessionxyzBasket.del(products['davidguettalisten']))
 
 /* Print current total */
-console.log('Current total is: $' + sessionxyzBasket.total);
+console.log('Current total is: $' + sessionxyzBasket.total)
 
 /*
   Now sell the basket (generate manifest)
@@ -103,15 +103,15 @@ console.log('Current total is: $' + sessionxyzBasket.total);
 /* Promise invocation */
 sessionxyzBasket.sell( { 'currency': 'USD' } )
 .then( manifest => {
-  console.log("Payment Response:");
-  console.log(manifest.payment);
+  console.log("Payment Response:")
+  console.log(manifest.payment)
 })
-.catch( err => console.log(err));
+.catch( err => console.log(err))
 
 /* Nodeback invocation */
 sessionxyzBasket.sell( { 'currency': 'USD' }, (err, manifest) => {
   if( err ) { return console.log(err) }
 
-  console.log("Payment Response:");
-  console.log(manifest.payment);
-});
+  console.log("Payment Response:")
+  console.log(manifest.payment)
+})

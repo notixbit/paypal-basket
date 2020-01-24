@@ -22,16 +22,16 @@
 *
 */
 
-var Paypal = require('paypal-basket').Paypal
-  , Basket = require('paypal-basket').Basket
-  , Product = require('paypal-basket').Product;
+var Paypal = require('@burnett01/paypal-basket').Paypal
+  , Basket = require('@burnett01/paypal-basket').Basket
+  , Product = require('@burnett01/paypal-basket').Product
 
 /* Configure paypal sdk */
 Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
-});
+})
 
 /* A JSON collection of music albums */
 var albums = [
@@ -50,21 +50,21 @@ var albums = [
     "name": "Simply Red - Thrill me",
     "price": "10.00"
   }
-];
+]
 
 /* 
   A collection of music products
   to contain the actual album products
 */
-var products = {};
+var products = {}
 
 /* 
   Create products from albums 
   and push to collection
 */
 for( var index in albums ) {
-  var album = albums[index];
-  products[album.sku] = new Product(album);
+  var album = albums[index]
+  products[album.sku] = new Product(album)
 }
 
 /* 
@@ -81,7 +81,7 @@ var sessionxyzBasket = new Basket({
     return_url: 'http://return.url',
     cancel_url: 'http://cancel.url'
   }
-});
+})
 
 
 /* 
@@ -92,10 +92,10 @@ var sessionxyzBasket = new Basket({
 sessionxyzBasket.add(products['davidguettalisten'])
 .then(sessionxyzBasket.add(products['michaeljacksonworld']))
 .then(sessionxyzBasket.add(products['simplyredthrillme']))
-.then(sessionxyzBasket.del(products['davidguettalisten']));
+.then(sessionxyzBasket.del(products['davidguettalisten']))
 
 /* Print current total */
-console.log('Current total is: $' + sessionxyzBasket.total);
+console.log('Current total is: $' + sessionxyzBasket.total)
 
 /*
   Now sell the basket (generate manifest)
@@ -105,15 +105,15 @@ console.log('Current total is: $' + sessionxyzBasket.total);
 /* Promise invocation */
 sessionxyzBasket.sell( { 'currency': 'USD' } )
 .then( function(manifest) {
-  console.log("Payment Response:");
-  console.log(manifest.payment);
+  console.log("Payment Response:")
+  console.log(manifest.payment)
 })
-.catch( function(err) { console.log(err) } );
+.catch( function(err) { console.log(err) } )
 
 /* Nodeback invocation */
 sessionxyzBasket.sell( { 'currency': 'USD' }, function(err, manifest) {
   if( err ) { return console.log(err) }
 
-  console.log("Payment Response:");
-  console.log(manifest.payment);
-});
+  console.log("Payment Response:")
+  console.log(manifest.payment)
+})

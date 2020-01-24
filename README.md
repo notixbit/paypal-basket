@@ -1,7 +1,7 @@
 
 # paypal-basket
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Burnett01/paypal-basket/master/LICENSE) [![Build Status](https://travis-ci.org/Burnett01/paypal-basket.svg?branch=master)](https://travis-ci.org/Burnett01/paypal-basket) [![npm version](https://badge.fury.io/js/paypal-basket.svg?ver=88)](https://badge.fury.io/js/paypal-basket)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Burnett01/paypal-basket/master/LICENSE) [![Build Status](https://travis-ci.org/Burnett01/paypal-basket.svg?branch=master)](https://travis-ci.org/Burnett01/paypal-basket) [![npm version](https://badge.fury.io/js/%40burnett01%2Fpaypal-basket.svg)](https://badge.fury.io/js/%40burnett01%2Fpaypal-basket)
 
 <img src="http://i.imgur.com/qnXIWQ6.png" align="right"/>
 
@@ -140,7 +140,7 @@ let demoBasket = new Basket({
         return_url: 'http://return.url',
         cancel_url: 'http://cancel.url'
     }
-});
+})
 
 //-------------------
 
@@ -151,7 +151,7 @@ var demoBasket = new Basket({
         return_url: 'http://return.url',
         cancel_url: 'http://cancel.url'
     }
-});
+})
 ```
 
 ---
@@ -173,7 +173,7 @@ const demoProduct = new Product({
   sku: 'mydemoproduct',
   name: 'My Demo Product',
   price: 5.00
-});
+})
 
 //-------------------
 
@@ -182,7 +182,7 @@ var demoProduct = new Product({
   sku: 'mydemoproduct',
   name: 'My Demo Product',
   price: 5.00
-});
+})
 ```
 
 ---
@@ -193,30 +193,30 @@ var demoProduct = new Product({
 //=> ES6
 
 /* Default invocation */
-demoBasket.add( demoProduct );
+demoBasket.add( demoProduct )
 
 /* Nodeback invocation */
 demoBasket.add( demoProduct, (err, ok) => {
-  if(err) { return console.log(err); }
+  if(err) { return console.log(err) }
 
-  console.log('Product has been added!');
-});
+  console.log('Product has been added!')
+})
 
 /* Promise invocation */
 demoBasket.add( demoProduct )
-  .then( ok => console.log('Product has been added!'); )
-  .catch( err => console.log(err); );
+  .then( ok => console.log('Product has been added!') )
+  .catch( err => console.log(err) )
 
 
 /* Promise batch-invocation */
 demoBasket.add( demoProduct )
   .then(demoBasket.add( demoProduct ))
-  .then(demoBasket.add( demoProduct ));
-  .then(demoBasket.add( demoProduct ));
+  .then(demoBasket.add( demoProduct ))
+  .then(demoBasket.add( demoProduct ))
 
 
 /* Adding a specific amount */
-demoBasket.add( demoProduct, 10 );
+demoBasket.add( demoProduct, 10 )
 
 
 //-------------------
@@ -224,29 +224,29 @@ demoBasket.add( demoProduct, 10 );
 //=> ES5
 
 /* Default invocation */
-demoBasket.add( demoProduct );
+demoBasket.add( demoProduct )
 
 /* Nodeback invocation */
 demoBasket.add( demoProduct, function(err, ok) {
-  if(err) { return console.log(err); }
+  if(err) { return console.log(err) }
 
-  console.log('Product has been added!');
-});
+  console.log('Product has been added!')
+})
 
 /* Promise invocation */
 demoBasket.add( demoProduct )
-  .then( function(ok) { console.log('Product has been added!'); } )
-  .catch( function(err) { console.log(err); } );
+  .then( function(ok) { console.log('Product has been added!') } )
+  .catch( function(err) { console.log(err) } )
 
 
 /* Promise batch-invocation */
 demoBasket.add( demoProduct )
   .then(demoBasket.add( demoProduct ))
-  .then(demoBasket.add( demoProduct ));
-  .then(demoBasket.add( demoProduct ));
+  .then(demoBasket.add( demoProduct ))
+  .then(demoBasket.add( demoProduct ))
 
 /* Adding a specific amount */
-demoBasket.add( demoProduct, 10 );
+demoBasket.add( demoProduct, 10 )
 ```
 
 ---
@@ -257,52 +257,52 @@ demoBasket.add( demoProduct, 10 );
 //=> ES6
 
 /* Default invocation */
-demoBasket.del( demoProduct );
+demoBasket.del( demoProduct )
 
 /* Nodeback invocation */
 demoBasket.del( demoProduct, (err, ok) => {
-  if(err) { return console.log(err); }
+  if(err) { return console.log(err) }
 
-  console.log('Product has been removed!');
-});
+  console.log('Product has been removed!')
+})
 
 /* Promise invocation */
 demoBasket.del( demoProduct )
-  .then( ok => console.log('Product has been removed!'); )
-  .catch( err => console.log(err); );
+  .then( ok => console.log('Product has been removed!') )
+  .catch( err => console.log(err) )
 
 
 /* Promise batch-invocation */
 demoBasket.del( demoProduct )
   .then(demoBasket.del( demoProduct ))
-  .then(demoBasket.del( demoProduct ));
-  .then(demoBasket.del( demoProduct ));
+  .then(demoBasket.del( demoProduct ))
+  .then(demoBasket.del( demoProduct ))
 
 //-------------------
 
 //=> ES5
 
 /* Default invocation */
-demoBasket.del( demoProduct );
+demoBasket.del( demoProduct )
 
 /* Nodeback invocation */
 demoBasket.del( demoProduct, function(err, ok) {
-  if(err) { return console.log(err); }
+  if(err) { return console.log(err) }
 
-  console.log('Product has been removed!');
-});
+  console.log('Product has been removed!')
+})
 
 /* Promised based invocation */
 demoBasket.del( demoProduct )
-  .then( function(ok) { console.log('Product has been removed!'); } )
-  .catch( function(err) { console.log(err); } );
+  .then( function(ok) { console.log('Product has been removed!') } )
+  .catch( function(err) { console.log(err) } )
 
 
 /* Promise batch-invocation */
 demoBasket.del( demoProduct )
   .then(demoBasket.del( demoProduct ))
-  .then(demoBasket.del( demoProduct ));
-  .then(demoBasket.del( demoProduct ));
+  .then(demoBasket.del( demoProduct ))
+  .then(demoBasket.del( demoProduct ))
 ```
 
 ---
@@ -313,38 +313,38 @@ demoBasket.del( demoProduct )
 //=> ES6
 
 /* Default invocation */
-demoBasket.clear();
+demoBasket.clear()
 
 /* Nodeback invocation */
 demoBasket.clear( (err, ok) => {
-  if(err) { return console.log(err); }
+  if(err) { return console.log(err) }
 
-  console.log('Basket has been cleared!');
-});
+  console.log('Basket has been cleared!')
+})
 
 /* Promise invocation */
 demoBasket.clear()
-  .then( ok => console.log('Basket has been cleared!'); )
-  .catch( err => console.log(err); );
+  .then( ok => console.log('Basket has been cleared!') )
+  .catch( err => console.log(err) )
 
 //-------------------
 
 //=> ES5
 
 /* Default invocation */
-demoBasket.clear());
+demoBasket.clear())
 
 /* Nodeback invocation */
 demoBasket.clear( function(err, ok) {
-  if(err) { return console.log(err); }
+  if(err) { return console.log(err) }
 
-  console.log('Basket has been cleared!');
-});
+  console.log('Basket has been cleared!')
+})
 
 /* Promised based invocation */
 demoBasket.clear()
-  .then( function(ok) { console.log('Basket has been cleared!'); } )
-  .catch( function(err) { console.log(err); } );
+  .then( function(ok) { console.log('Basket has been cleared!') } )
+  .catch( function(err) { console.log(err) } )
 ```
 
 ---
@@ -372,10 +372,10 @@ demoBasket.sell( { 'currency': 'USD' }, (err, manifest) => {
   // Payment request has been performed and you can access
   // the data (links, timestamp, etc) by using manifest.payment
 
-  console.log("Payment ID: " + manifest.payment.id);
-  console.log("Payment created: " + manifest.payment.create_time);
-  console.log("Payment URL: " + manifest.payment.links[1].href);
-});
+  console.log("Payment ID: " + manifest.payment.id)
+  console.log("Payment created: " + manifest.payment.create_time)
+  console.log("Payment URL: " + manifest.payment.links[1].href)
+})
 
 /* -> Promise invocation */
 demoBasket.sell( { 'currency': 'USD' } )
@@ -383,11 +383,11 @@ demoBasket.sell( { 'currency': 'USD' } )
   // Payment request has been performed and you can access
   // the data (links, timestamp, etc) by using manifest.payment
 
-  console.log("Payment ID: " + manifest.payment.id);
-  console.log("Payment created: " + manifest.payment.create_time);
-  console.log("Payment URL: " + manifest.payment.links[1].href);
+  console.log("Payment ID: " + manifest.payment.id)
+  console.log("Payment created: " + manifest.payment.create_time)
+  console.log("Payment URL: " + manifest.payment.links[1].href)
 })
-.catch( err => console.log(err));
+.catch( err => console.log(err))
 
 //-------------------
 
@@ -395,15 +395,15 @@ demoBasket.sell( { 'currency': 'USD' } )
 
 /* -> Nodeback invocation */
 demoBasket.sell( { 'currency': 'USD' }, function(err, manifest) {
-  if( err ) { return console.log(err); }
+  if( err ) { return console.log(err) }
 
   // Payment request has been performed and you can access
   // the data (links, timestamp, etc) by using manifest.payment
 
-  console.log("Payment ID: " + manifest.payment.id);
-  console.log("Payment created: " + manifest.payment.create_time);
-  console.log("Payment URL: " + manifest.payment.links[1].href);
-});
+  console.log("Payment ID: " + manifest.payment.id)
+  console.log("Payment created: " + manifest.payment.create_time)
+  console.log("Payment URL: " + manifest.payment.links[1].href)
+})
 
 /* -> Promise invocation */
 demoBasket.sell( { 'currency': 'USD' } )
@@ -411,37 +411,37 @@ demoBasket.sell( { 'currency': 'USD' } )
   // Payment request has been performed and you can access
   // the data (links, timestamp, etc) by using manifest.payment
 
-  console.log("Payment ID: " + manifest.payment.id);
-  console.log("Payment created: " + manifest.payment.create_time);
-  console.log("Payment URL: " + manifest.payment.links[1].href);
+  console.log("Payment ID: " + manifest.payment.id)
+  console.log("Payment created: " + manifest.payment.create_time)
+  console.log("Payment URL: " + manifest.payment.links[1].href)
 })
-.catch( function(err) { console.log(err); } );
+.catch( function(err) { console.log(err) } )
 ```
 
 #### Manual payment-request processing:
 
 ```javascript
-import paypal from 'paypal-rest-sdk';
+import paypal from 'paypal-rest-sdk'
 
 //=> ES6
 
 /* -> Nodeback invocation */
 demoBasket.sell({ currency: 'USD', 'norequest': true },
 (err, manifest) => {
-  if( err ) { return console.log(err); }
+  if( err ) { return console.log(err) }
 
   // Payment request has not been performed and you can use
   // the manifest to perform it yourself
 
   paypal.payment.create(manifest, (error, payment) => {
-    if( error ){ throw error; }
+    if( error ){ throw error }
 
-    console.log("Payment ID: " + payment.id);
-    console.log("Payment created: " + payment.create_time);
-    console.log("Payment URL: " + payment.links[1].href);
-  });
+    console.log("Payment ID: " + payment.id)
+    console.log("Payment created: " + payment.create_time)
+    console.log("Payment URL: " + payment.links[1].href)
+  })
 
-});
+})
 
 /* -> Promise invocation */
 demoBasket.sell( { 'currency': 'USD', 'norequest': true } )
@@ -450,15 +450,15 @@ demoBasket.sell( { 'currency': 'USD', 'norequest': true } )
   // the manifest to perform it yourself
 
   paypal.payment.create(manifest, (error, payment) => {
-    if( error ){ throw error; }
+    if( error ){ throw error }
 
-    console.log("Payment ID: " + payment.id);
-    console.log("Payment created: " + payment.create_time);
-    console.log("Payment URL: " + payment.links[1].href);
-  });
+    console.log("Payment ID: " + payment.id)
+    console.log("Payment created: " + payment.create_time)
+    console.log("Payment URL: " + payment.links[1].href)
+  })
 
 })
-.catch( err => console.log(err));
+.catch( err => console.log(err))
 
 //-------------------
 
@@ -467,20 +467,20 @@ demoBasket.sell( { 'currency': 'USD', 'norequest': true } )
 /* -> Nodeback invocation */
 demoBasket.sell({ currency: 'USD', 'norequest': true },
 function(err, manifest) {
-  if( err ) { return console.log(err); }
+  if( err ) { return console.log(err) }
 
   // Payment request has not been performed and you can use
   // the manifest to perform it yourself
 
   paypal.payment.create(manifest, function(error, payment) {
-    if( error ){ throw error; }
+    if( error ){ throw error }
 
-    console.log("Payment ID: " + payment.id);
-    console.log("Payment created: " + payment.create_time);
-    console.log("Payment URL: " + payment.links[1].href);
-  });
+    console.log("Payment ID: " + payment.id)
+    console.log("Payment created: " + payment.create_time)
+    console.log("Payment URL: " + payment.links[1].href)
+  })
 
-});
+})
 
 /* -> Promise invocation */
 demoBasket.sell( { 'currency': 'USD', 'norequest': true } )
@@ -489,15 +489,15 @@ demoBasket.sell( { 'currency': 'USD', 'norequest': true } )
   // the manifest to perform it yourself
 
   paypal.payment.create(manifest, function(error, payment) {
-    if( error ){ throw error; }
+    if( error ){ throw error }
 
-    console.log("Payment ID: " + payment.id);
-    console.log("Payment created: " + payment.create_time);
-    console.log("Payment URL: " + payment.links[1].href);
-  });
+    console.log("Payment ID: " + payment.id)
+    console.log("Payment created: " + payment.create_time)
+    console.log("Payment URL: " + payment.links[1].href)
+  })
 
 })
-.catch( function(err) { console.log(err); } );
+.catch( function(err) { console.log(err) } )
 ```
 
 ---
@@ -517,14 +517,14 @@ Check out the ['examples' folder for ES5 + ES6 samples](../master/examples)
 In this example paypal-basket will craft the manifest and request the actual payment by using the internal Paypal-SDK.
 
 ```javascript
-import { Paypal, Basket, Product } from 'paypal-basket'
+import { Paypal, Basket, Product } from '@burnett01/paypal-basket'
 
 /* Configure paypal sdk */
 Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
-});
+})
 
 /* A JSON collection of music albums */
 let albums = [
@@ -543,21 +543,21 @@ let albums = [
     "name": "Simply Red - Thrill me",
     "price": "10.00"
   }
-];
+]
 
 /* 
   A collection of music products
   to contain the actual album products
 */
-let products = {};
+let products = {}
 
 /* 
   Create products from albums 
   and push to collection
 */
 for( let index in albums ) {
-  let album = albums[index];
-  products[album.sku] = new Product(album);
+  let album = albums[index]
+  products[album.sku] = new Product(album)
 }
 
 /* 
@@ -574,7 +574,7 @@ let sessionxyzBasket = new Basket({
     return_url: 'http://return.url',
     cancel_url: 'http://cancel.url'
   }
-});
+})
 
 
 /* 
@@ -585,10 +585,10 @@ let sessionxyzBasket = new Basket({
 sessionxyzBasket.add(products['davidguettalisten'])
 .then(sessionxyzBasket.add(products['michaeljacksonworld']))
 .then(sessionxyzBasket.add(products['simplyredthrillme']))
-.then(sessionxyzBasket.del(products['davidguettalisten']));
+.then(sessionxyzBasket.del(products['davidguettalisten']))
 
 /* Print current total */
-console.log('Current total is: $' + sessionxyzBasket.total);
+console.log('Current total is: $' + sessionxyzBasket.total)
 
 /*
   Now sell the basket (generate manifest)
@@ -598,18 +598,18 @@ console.log('Current total is: $' + sessionxyzBasket.total);
 /* Promise invocation */
 sessionxyzBasket.sell( { 'currency': 'USD' } )
 .then( manifest => {
-  console.log("Payment Response:");
-  console.log(manifest.payment);
+  console.log("Payment Response:")
+  console.log(manifest.payment)
 })
-.catch( err => console.log(err));
+.catch( err => console.log(err))
 
 /* Nodeback invocation */
 sessionxyzBasket.sell( { 'currency': 'USD' }, (err, manifest) => {
   if( err ) { return console.log(err) }
 
-  console.log("Payment Response:");
-  console.log(manifest.payment);
-});
+  console.log("Payment Response:")
+  console.log(manifest.payment)
+})
 ```
 
 ### Example 2 (Manual payment-request) ES6
@@ -621,15 +621,15 @@ but it won't perform the actual payment request.
 Make sure ```norequest``` is *true*.
 
 ```javascript
-import paypal from 'paypal-rest-sdk';
-import { Basket, Product } from 'paypal-basket';
+import paypal from 'paypal-rest-sdk'
+import { Basket, Product } from '@burnett01/paypal-basket'
 
 /* Configure external paypal sdk */
 paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
-});
+})
 
 /* Some sample products */
 
@@ -637,13 +637,13 @@ let demoProduct1 = new Product({
   sku: 'demoproduct1',
   name: 'Demo Product 1',
   price: 15.00
-});
+})
 
 let demoProduct2 = new Product({
   sku: 'demoproduct2',
   name: 'Demo Product 2',
   price: 6.53
-});
+})
 
 /* Create a basket (eg. for a customer) */
 let demoBasket = new Basket({
@@ -652,17 +652,17 @@ let demoBasket = new Basket({
     return_url: 'http://return.url',
     cancel_url: 'http://cancel.url'
   }
-});
+})
 
 
 /* 
   Add our demo products
 */
-demoBasket.add(demoProduct1);
-demoBasket.add(demoProduct2);
+demoBasket.add(demoProduct1)
+demoBasket.add(demoProduct2)
 
 /* Print current total */
-console.log('Current total is: $' + demoBasket.total);
+console.log('Current total is: $' + demoBasket.total)
 
 /*
   Now sell the basket (generate manifest)
@@ -675,24 +675,24 @@ demoBasket.sell({
 })
 .then( manifest => {
   paypal.payment.create(manifest, (error, payment) => {
-    if(error){ throw error; }
+    if(error){ throw error }
 
-    console.log("Payment Response:");
-    console.log(payment);
-  });
+    console.log("Payment Response:")
+    console.log(payment)
+  })
 })
-.catch( err => console.log(err));
+.catch( err => console.log(err))
 ```
 
 ---
 
 ## Setup / Install
 
-Use `npm install paypal-basket` 
+Use `npm install @burnett01/paypal-basket` 
 
 ```javascript
 //=> ES6
-import { Paypal, Basket, Product } from 'paypal-basket';
+import { Paypal, Basket, Product } from '@burnett01/paypal-basket'
 
 /*
   Configure paypal SDK
@@ -703,16 +703,16 @@ Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
-});
+})
 
 /* Now check examples above */
 
 //-------------------
 
 //=> ES5
-var Paypal = require('paypal-basket').Paypal
-  , Basket = require('paypal-basket').Basket
-  , Product = require('paypal-basket').Product;
+var Paypal = require('@burnett01/paypal-basket').Paypal
+  , Basket = require('@burnett01/paypal-basket').Basket
+  , Product = require('@burnett01/paypal-basket').Product
 
 /*
   Configure paypal SDK
@@ -723,7 +723,7 @@ Paypal.configure({
   mode: 'sandbox',
   client_id: '',
   client_secret: ''
-});
+})
 
 /* Now check examples above */
 ```
