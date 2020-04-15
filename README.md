@@ -1,7 +1,7 @@
 
 # paypal-basket
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Burnett01/paypal-basket/master/LICENSE) [![Build Status](https://travis-ci.org/Burnett01/paypal-basket.svg?branch=master)](https://travis-ci.org/Burnett01/paypal-basket) [![npm version](https://badge.fury.io/js/%40burnett01%2Fpaypal-basket.svg)](https://badge.fury.io/js/%40burnett01%2Fpaypal-basket)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/notixbit/paypal-basket/master/LICENSE) [![Build Status](https://travis-ci.org/notixbit/paypal-basket.svg?branch=master)](https://travis-ci.org/notixbit/paypal-basket) [![npm version](https://badge.fury.io/js/%40notixbit%2Fpaypal-basket.svg)](https://badge.fury.io/js/%40notixbit%2Fpaypal-basket)
 
 <img src="http://i.imgur.com/qnXIWQ6.png" align="right"/>
 
