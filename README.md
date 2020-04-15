@@ -517,7 +517,7 @@ Check out the ['examples' folder for ES5 + ES6 samples](../master/examples)
 In this example paypal-basket will craft the manifest and request the actual payment by using the internal Paypal-SDK.
 
 ```javascript
-import { Paypal, Basket, Product } from '@burnett01/paypal-basket'
+import { Paypal, Basket, Product } from '@notixbit/paypal-basket'
 
 /* Configure paypal sdk */
 Paypal.configure({
@@ -622,7 +622,7 @@ Make sure ```norequest``` is *true*.
 
 ```javascript
 import paypal from 'paypal-rest-sdk'
-import { Basket, Product } from '@burnett01/paypal-basket'
+import { Basket, Product } from '@notixbit/paypal-basket'
 
 /* Configure external paypal sdk */
 paypal.configure({
@@ -688,11 +688,11 @@ demoBasket.sell({
 
 ## Setup / Install
 
-Use `npm install @burnett01/paypal-basket` 
+Use `npm install @notixbit/paypal-basket` 
 
 ```javascript
 //=> ES6
-import { Paypal, Basket, Product } from '@burnett01/paypal-basket'
+import { Paypal, Basket, Product } from '@notixbit/paypal-basket'
 
 /*
   Configure paypal SDK
@@ -710,9 +710,9 @@ Paypal.configure({
 //-------------------
 
 //=> ES5
-var Paypal = require('@burnett01/paypal-basket').Paypal
-  , Basket = require('@burnett01/paypal-basket').Basket
-  , Product = require('@burnett01/paypal-basket').Product
+var Paypal = require('@notixbit/paypal-basket').Paypal
+  , Basket = require('@notixbit/paypal-basket').Basket
+  , Product = require('@notixbit/paypal-basket').Product
 
 /*
   Configure paypal SDK

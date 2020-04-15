@@ -22,9 +22,9 @@
 *
 */
 
-var Paypal = require('@burnett01/paypal-basket').Paypal
-  , Basket = require('@burnett01/paypal-basket').Basket
-  , Product = require('@burnett01/paypal-basket').Product
+var Paypal = require('@notixbit/paypal-basket').Paypal
+  , Basket = require('@notixbit/paypal-basket').Basket
+  , Product = require('@notixbit/paypal-basket').Product
 
 /* Configure paypal sdk */
 Paypal.configure({

@@ -23,8 +23,8 @@
 */
 
 var paypal = require('paypal-rest-sdk')
-  , Basket = require('@burnett01/paypal-basket').Basket
-  , Product = require('@burnett01/paypal-basket').Product
+  , Basket = require('@notixbit/paypal-basket').Basket
+  , Product = require('@notixbit/paypal-basket').Product
 
 /* Configure external paypal sdk */
 paypal.configure({

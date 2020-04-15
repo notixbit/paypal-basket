@@ -23,7 +23,7 @@
 */
 
 import paypal from 'paypal-rest-sdk'
-import { Basket, Product } from '@burnett01/paypal-basket'
+import { Basket, Product } from '@notixbit/paypal-basket'
 
 /* Configure external paypal sdk */
 paypal.configure({

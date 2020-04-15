@@ -1,5 +1,5 @@
 {
-  "name": "@burnett01/paypal-basket",
+  "name": "@notixbit/paypal-basket",
   "version": "1.1.0",
   "description": "A simple basket & product manager for the PayPal-node SDK",
   "keywords": [
@@ -20,10 +20,14 @@
   "author": {
     "name": "Steven Agyekum",
     "email": "agyekum@posteo.de",
-    "url": "https://github.com/Burnett01/paypal-basket"
+    "url": "https://github.com/Burnett01"
   },
   "license": "MIT",
   "maintainers": [
+    {
+      "name": "Notixbit Creative",
+      "email": "info@notixbit.net"
+    },
     {
       "name": "Burnett01",
       "email": "agyekum@posteo.de"
@@ -31,10 +35,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/Burnett01/paypal-basket.git"
+    "url": "ssh://git@github.com/notixbit/paypal-basket.git"
   },
   "bugs": {
-    "url": "https://github.com/Burnett01/paypal-basket/issues"
+    "url": "https://github.com/notixbit/paypal-basket/issues"
   },
   "main": "dist/main.js",
   "scripts": {

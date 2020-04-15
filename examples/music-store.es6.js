@@ -22,7 +22,7 @@
 *
 */
 
-import { Paypal, Basket, Product } from '@burnett01/paypal-basket'
+import { Paypal, Basket, Product } from '@notixbit/paypal-basket'
 
 /* Configure paypal sdk */
 Paypal.configure({
