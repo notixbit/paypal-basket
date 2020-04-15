@@ -16,6 +16,16 @@ Features:
   * Promises & classic nodeback
   * Tests
 
+Variants:
+
+Due to migration of the package over the last years, it comes in 3 variants.<br />
+All of them share the same code, version, receive all future updates, and <br/>
+you won't have to update your ``package.json``:
+
+``@notixbit/paypal-basket``<br />
+``@burnett01/paypal-basket``<br />
+``paypal-basket``
+
 ---
 
 # Table of contents
