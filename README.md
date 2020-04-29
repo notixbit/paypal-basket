@@ -455,7 +455,7 @@ but it won't perform the actual payment request.
 Make sure ```norequest``` is *true*.
 
 ```javascript
-const paypal = require ('paypal-rest-sdk')
+const paypal = require('paypal-rest-sdk')
 const { Basket, Product } = require('@notixbit/paypal-basket')
 
 /* Configure external paypal sdk */
