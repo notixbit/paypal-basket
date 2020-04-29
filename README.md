@@ -12,8 +12,8 @@ Ultimatively it can also request the actual PayPal payment details for you.
 
 Features:
   * Easy product & basket management
-  * ES6 & ES5 support + documentation
-  * Promises & classic nodeback
+  * ES8, ES6, ES5 support
+  * Async/Await, Promises & Callbacks
   * Tests
 
 Variants:
@@ -44,12 +44,9 @@ you won't have to update your ``package.json``:
     * [Manual payment-request processing](#manual-payment-request-processing)
   * [Payment request-data](#payment-request-data)
 * [Examples](#examples)
-  * [Example 1 (Music Store) ES6](#example-1-music-store-es6)
-  * [Example 2 (Manual payment-request) ES6](#example-2-manual-payment-request-es6)
+  * [Example 1 (Music Store)](#example-1-music-store)
+  * [Example 2 (Manual payment-request)](#example-2-manual-payment-request)
 * [Setup / Install](#setup-install)
-* [Build](#build)
-  * [Make](#make)
-  * [NPM](#npm)
 * [Unit-Tests](#unit-tests)
   * [Make](#make-1)
   * [NPM](#npm-1)
@@ -78,14 +75,14 @@ Basket(
     total:    Number=0.00,
 
     /* Methods */
-    add:  [Product, Number=amount, function(class ErrorClass err, null ok) cb] | Promise
-    del:  [Product, function(class ErrorClass err, null ok) cb] | Promise
-    clear:  [function(class ErrorClass err, null ok) cb] | Promise
+    add:  [Product, Number=amount, (ErrorClass err) => {}] | Promise
+    del:  [Product, (ErrorClass err) => {}] | Promise
+    clear:  [(ErrorClass err) => {}] | Promise
     sell: [Object {
         currency: String='USD',
         description: String='',
         norequest: Boolean=false
-    } options, function(class ErrorClass err, String manifest)] | Promise
+    } options, (ErrorClass err, String manifest) => {}] | Promise
 }
 ```
 
@@ -143,24 +140,12 @@ Product(
 |  |``cancel_url`` = Url to return to, on erroneous payment |
 
 ```javascript
-//=> ES6
-let demoBasket = new Basket({
-    label: 'My Demo Basket',
-    urls: {
-        return_url: 'http://return.url',
-        cancel_url: 'http://cancel.url'
-    }
-})
-
-//-------------------
-
-//=> ES5
-var demoBasket = new Basket({
-    label: 'My Demo Basket',
-    urls: {
-        return_url: 'http://return.url',
-        cancel_url: 'http://cancel.url'
-    }
+const demoBasket = new Basket({
+  label: 'My Demo Basket',
+  urls: {
+      return_url: 'http://return.url',
+      cancel_url: 'http://cancel.url'
+  }
 })
 ```
 
@@ -178,17 +163,7 @@ var demoBasket = new Basket({
 | currency | ISO 4217 currency code (eg. USD, EUR, GBP,...) | No |
 
 ```javascript
-//=> ES6
 const demoProduct = new Product({
-  sku: 'mydemoproduct',
-  name: 'My Demo Product',
-  price: 5.00
-})
-
-//-------------------
-
-//=> ES5
-var demoProduct = new Product({
   sku: 'mydemoproduct',
   name: 'My Demo Product',
   price: 5.00
@@ -200,63 +175,30 @@ var demoProduct = new Product({
 ### Adding products to a basket
 
 ```javascript
-//=> ES6
+/* Synchronous */
+demoBasket.add(demoProduct)
+demoBasket.add(demoProduct, 10)
 
-/* Default invocation */
-demoBasket.add( demoProduct )
+/* Async/Await */
+await demoBasket.add(demoProduct)
+await demoBasket.add(demoProduct, 10)
 
-/* Nodeback invocation */
-demoBasket.add( demoProduct, (err, ok) => {
-  if(err) { return console.log(err) }
+/* Promise */
+demoBasket.add(demoProduct)
+  .then(() => console.log('Product has been added!'))
+  .catch(err => console.log(err))
 
+/* Promise batch */
+demoBasket.add(demoProduct)
+  .then(demoBasket.add(demoProduct))
+  .then(demoBasket.add(demoProduct))
+  .then(demoBasket.add(demoProduct))
+
+/* Callback */
+demoBasket.add(demoProduct, err => {
+  if (err) { return console.log(err) }
   console.log('Product has been added!')
 })
-
-/* Promise invocation */
-demoBasket.add( demoProduct )
-  .then( ok => console.log('Product has been added!') )
-  .catch( err => console.log(err) )
-
-
-/* Promise batch-invocation */
-demoBasket.add( demoProduct )
-  .then(demoBasket.add( demoProduct ))
-  .then(demoBasket.add( demoProduct ))
-  .then(demoBasket.add( demoProduct ))
-
-
-/* Adding a specific amount */
-demoBasket.add( demoProduct, 10 )
-
-
-//-------------------
-
-//=> ES5
-
-/* Default invocation */
-demoBasket.add( demoProduct )
-
-/* Nodeback invocation */
-demoBasket.add( demoProduct, function(err, ok) {
-  if(err) { return console.log(err) }
-
-  console.log('Product has been added!')
-})
-
-/* Promise invocation */
-demoBasket.add( demoProduct )
-  .then( function(ok) { console.log('Product has been added!') } )
-  .catch( function(err) { console.log(err) } )
-
-
-/* Promise batch-invocation */
-demoBasket.add( demoProduct )
-  .then(demoBasket.add( demoProduct ))
-  .then(demoBasket.add( demoProduct ))
-  .then(demoBasket.add( demoProduct ))
-
-/* Adding a specific amount */
-demoBasket.add( demoProduct, 10 )
 ```
 
 ---
@@ -264,55 +206,28 @@ demoBasket.add( demoProduct, 10 )
 ### Deleting products from a basket
 
 ```javascript
-//=> ES6
+/* Synchronous */
+demoBasket.del(demoProduct)
 
-/* Default invocation */
-demoBasket.del( demoProduct )
+/* Async/Await */
+await demoBasket.del(demoProduct)
 
-/* Nodeback invocation */
-demoBasket.del( demoProduct, (err, ok) => {
-  if(err) { return console.log(err) }
+/* Promise */
+demoBasket.del(demoProduct)
+  .then(() => console.log('Product has been removed!'))
+  .catch(err => console.log(err))
 
+/* Promise batch */
+demoBasket.del(demoProduct)
+  .then(demoBasket.del(demoProduct))
+  .then(demoBasket.del(demoProduct))
+  .then(demoBasket.del(demoProduct))
+
+/* Callback */
+demoBasket.del(demoProduct, err => {
+  if (err) { return console.log(err) }
   console.log('Product has been removed!')
 })
-
-/* Promise invocation */
-demoBasket.del( demoProduct )
-  .then( ok => console.log('Product has been removed!') )
-  .catch( err => console.log(err) )
-
-
-/* Promise batch-invocation */
-demoBasket.del( demoProduct )
-  .then(demoBasket.del( demoProduct ))
-  .then(demoBasket.del( demoProduct ))
-  .then(demoBasket.del( demoProduct ))
-
-//-------------------
-
-//=> ES5
-
-/* Default invocation */
-demoBasket.del( demoProduct )
-
-/* Nodeback invocation */
-demoBasket.del( demoProduct, function(err, ok) {
-  if(err) { return console.log(err) }
-
-  console.log('Product has been removed!')
-})
-
-/* Promised based invocation */
-demoBasket.del( demoProduct )
-  .then( function(ok) { console.log('Product has been removed!') } )
-  .catch( function(err) { console.log(err) } )
-
-
-/* Promise batch-invocation */
-demoBasket.del( demoProduct )
-  .then(demoBasket.del( demoProduct ))
-  .then(demoBasket.del( demoProduct ))
-  .then(demoBasket.del( demoProduct ))
 ```
 
 ---
@@ -320,41 +235,22 @@ demoBasket.del( demoProduct )
 ### Empty a basket
 
 ```javascript
-//=> ES6
-
-/* Default invocation */
+/* Synchronous */
 demoBasket.clear()
 
-/* Nodeback invocation */
-demoBasket.clear( (err, ok) => {
-  if(err) { return console.log(err) }
+/* Async/Await */
+await demoBasket.clear()
 
+/* Promise */
+demoBasket.clear()
+  .then(() => console.log('Basket has been cleared!'))
+  .catch( err => console.log(err))
+
+/* Callback */
+demoBasket.clear(err  => {
+  if (err) { return console.log(err) }
   console.log('Basket has been cleared!')
 })
-
-/* Promise invocation */
-demoBasket.clear()
-  .then( ok => console.log('Basket has been cleared!') )
-  .catch( err => console.log(err) )
-
-//-------------------
-
-//=> ES5
-
-/* Default invocation */
-demoBasket.clear())
-
-/* Nodeback invocation */
-demoBasket.clear( function(err, ok) {
-  if(err) { return console.log(err) }
-
-  console.log('Basket has been cleared!')
-})
-
-/* Promised based invocation */
-demoBasket.clear()
-  .then( function(ok) { console.log('Basket has been cleared!') } )
-  .catch( function(err) { console.log(err) } )
 ```
 
 ---
@@ -373,161 +269,93 @@ demoBasket.clear()
 #### Auto payment-request processing:
 
 ```javascript
-//=> ES6
+/* Async/Await */
+const manifest = await demoBasket.sell({ 'currency': 'USD' })
+// Payment request has been performed and you can access
+// the data (links, timestamp, etc) by using manifest.payment
+console.log("Payment ID: " + manifest.payment.id)
+console.log("Payment created: " + manifest.payment.create_time)
+console.log("Payment URL: " + manifest.payment.links[1].href)
 
-/* -> Nodeback invocation */
-demoBasket.sell( { 'currency': 'USD' }, (err, manifest) => {
-  if( err ) { return console.log(err) }
+/* Promise */
+demoBasket.sell({ 'currency': 'USD' })
+  .then(manifest => {
+    // Payment request has been performed and you can access
+    // the data (links, timestamp, etc) by using manifest.payment
+    console.log("Payment ID: " + manifest.payment.id)
+    console.log("Payment created: " + manifest.payment.create_time)
+    console.log("Payment URL: " + manifest.payment.links[1].href)
+  })
+  .catch(err => console.log(err))
 
+/* Callback */
+demoBasket.sell({ 'currency': 'USD' }, (err, manifest) => {
+  if (err) { return console.log(err) }
   // Payment request has been performed and you can access
   // the data (links, timestamp, etc) by using manifest.payment
-
   console.log("Payment ID: " + manifest.payment.id)
   console.log("Payment created: " + manifest.payment.create_time)
   console.log("Payment URL: " + manifest.payment.links[1].href)
 })
-
-/* -> Promise invocation */
-demoBasket.sell( { 'currency': 'USD' } )
-.then( manifest => {
-  // Payment request has been performed and you can access
-  // the data (links, timestamp, etc) by using manifest.payment
-
-  console.log("Payment ID: " + manifest.payment.id)
-  console.log("Payment created: " + manifest.payment.create_time)
-  console.log("Payment URL: " + manifest.payment.links[1].href)
-})
-.catch( err => console.log(err))
-
-//-------------------
-
-//=> ES5
-
-/* -> Nodeback invocation */
-demoBasket.sell( { 'currency': 'USD' }, function(err, manifest) {
-  if( err ) { return console.log(err) }
-
-  // Payment request has been performed and you can access
-  // the data (links, timestamp, etc) by using manifest.payment
-
-  console.log("Payment ID: " + manifest.payment.id)
-  console.log("Payment created: " + manifest.payment.create_time)
-  console.log("Payment URL: " + manifest.payment.links[1].href)
-})
-
-/* -> Promise invocation */
-demoBasket.sell( { 'currency': 'USD' } )
-.then( function(manifest) {
-  // Payment request has been performed and you can access
-  // the data (links, timestamp, etc) by using manifest.payment
-
-  console.log("Payment ID: " + manifest.payment.id)
-  console.log("Payment created: " + manifest.payment.create_time)
-  console.log("Payment URL: " + manifest.payment.links[1].href)
-})
-.catch( function(err) { console.log(err) } )
 ```
 
 #### Manual payment-request processing:
 
 ```javascript
-import paypal from 'paypal-rest-sdk'
+const paypal = require('paypal-rest-sdk')
 
-//=> ES6
+/* Async/Await */
+const manifest = await demoBasket.sell({ 'currency': 'USD', 'norequest': true })
+// Payment request has not been performed and you can use
+// the manifest to perform it yourself
+const payment = await paypal.payment.create(manifest)
+console.log("Payment ID: " + payment.id)
+console.log("Payment created: " + payment.create_time)
+console.log("Payment URL: " + payment.links[1].href)
 
-/* -> Nodeback invocation */
-demoBasket.sell({ currency: 'USD', 'norequest': true },
-(err, manifest) => {
-  if( err ) { return console.log(err) }
+/* Promise */
+demoBasket.sell({ 'currency': 'USD', 'norequest': true })
+  .then(manifest => {
+    // Payment request has not been performed and you can use
+    // the manifest to perform it yourself
+    paypal.payment.create(manifest, (errPP, payment) => {
+      if (errPP){ console.log(errPP) }
+      console.log("Payment ID: " + payment.id)
+      console.log("Payment created: " + payment.create_time)
+      console.log("Payment URL: " + payment.links[1].href)
+    })
+  })
+  .catch(err => console.log(err))
 
+/* Callback */
+demoBasket.sell({ currency: 'USD', 'norequest': true }, (err, manifest) => {
+  if (err) { return console.log(err) }
   // Payment request has not been performed and you can use
   // the manifest to perform it yourself
-
-  paypal.payment.create(manifest, (error, payment) => {
-    if( error ){ throw error }
-
+  paypal.payment.create(manifest, (errPP, payment) => {
+    if (errPP) { console.log(errPP) }
     console.log("Payment ID: " + payment.id)
     console.log("Payment created: " + payment.create_time)
     console.log("Payment URL: " + payment.links[1].href)
   })
-
 })
-
-/* -> Promise invocation */
-demoBasket.sell( { 'currency': 'USD', 'norequest': true } )
-.then( manifest => {
-  // Payment request has not been performed and you can use
-  // the manifest to perform it yourself
-
-  paypal.payment.create(manifest, (error, payment) => {
-    if( error ){ throw error }
-
-    console.log("Payment ID: " + payment.id)
-    console.log("Payment created: " + payment.create_time)
-    console.log("Payment URL: " + payment.links[1].href)
-  })
-
-})
-.catch( err => console.log(err))
-
-//-------------------
-
-//=> ES5
-
-/* -> Nodeback invocation */
-demoBasket.sell({ currency: 'USD', 'norequest': true },
-function(err, manifest) {
-  if( err ) { return console.log(err) }
-
-  // Payment request has not been performed and you can use
-  // the manifest to perform it yourself
-
-  paypal.payment.create(manifest, function(error, payment) {
-    if( error ){ throw error }
-
-    console.log("Payment ID: " + payment.id)
-    console.log("Payment created: " + payment.create_time)
-    console.log("Payment URL: " + payment.links[1].href)
-  })
-
-})
-
-/* -> Promise invocation */
-demoBasket.sell( { 'currency': 'USD', 'norequest': true } )
-.then( function(manifest) {
-  // Payment request has not been performed and you can use
-  // the manifest to perform it yourself
-
-  paypal.payment.create(manifest, function(error, payment) {
-    if( error ){ throw error }
-
-    console.log("Payment ID: " + payment.id)
-    console.log("Payment created: " + payment.create_time)
-    console.log("Payment URL: " + payment.links[1].href)
-  })
-
-})
-.catch( function(err) { console.log(err) } )
 ```
 
 ---
 
 ### Payment request-data:
 
-<img src="http://i.imgur.com/g50sduz.png" />
-
+<img src="https://i.imgur.com/g50sduz.png" />
 
 ---
 
 ## Examples
 
-Check out the ['examples' folder for ES5 + ES6 samples](../master/examples)
-
-### Example 1 (Music Store) ES6
+### Example 1 (Music Store)
 In this example paypal-basket will craft the manifest and request the actual payment by using the internal Paypal-SDK.
 
 ```javascript
-import { Paypal, Basket, Product } from '@notixbit/paypal-basket'
+const { Paypal, Basket, Product } = require('@notixbit/paypal-basket')
 
 /* Configure paypal sdk */
 Paypal.configure({
@@ -537,7 +365,7 @@ Paypal.configure({
 })
 
 /* A JSON collection of music albums */
-let albums = [
+const albums = [
   {
     "sku": "davidguettalisten",
     "name": "David Guetta - Listen",
@@ -559,14 +387,14 @@ let albums = [
   A collection of music products
   to contain the actual album products
 */
-let products = {}
+const products = {}
 
 /* 
   Create products from albums 
   and push to collection
 */
-for( let index in albums ) {
-  let album = albums[index]
+for(const index in albums) {
+  const album = albums[index]
   products[album.sku] = new Product(album)
 }
 
@@ -578,7 +406,7 @@ for( let index in albums ) {
 */
 
 /* Create a basket (eg. for a customer) */
-let sessionxyzBasket = new Basket({
+const sessionxyzBasket = new Basket({
   label: 'Basket of session xyz',
   urls: {
     return_url: 'http://return.url',
@@ -586,16 +414,15 @@ let sessionxyzBasket = new Basket({
   }
 })
 
-
 /* 
   Now let the customer add/del 
   some products to/from their basket.
   Presumably via website
 */
 sessionxyzBasket.add(products['davidguettalisten'])
-.then(sessionxyzBasket.add(products['michaeljacksonworld']))
-.then(sessionxyzBasket.add(products['simplyredthrillme']))
-.then(sessionxyzBasket.del(products['davidguettalisten']))
+sessionxyzBasket.add(products['michaeljacksonworld'])
+sessionxyzBasket.add(products['simplyredthrillme'])
+sessionxyzBasket.del(products['davidguettalisten'])
 
 /* Print current total */
 console.log('Current total is: $' + sessionxyzBasket.total)
@@ -604,25 +431,22 @@ console.log('Current total is: $' + sessionxyzBasket.total)
   Now sell the basket (generate manifest)
   and request actual payment details
 */
-
-/* Promise invocation */
-sessionxyzBasket.sell( { 'currency': 'USD' } )
-.then( manifest => {
+try {
+  const manifest = await sessionxyzBasket.sell({ 'currency': 'USD' })
   console.log("Payment Response:")
   console.log(manifest.payment)
-})
-.catch( err => console.log(err))
-
-/* Nodeback invocation */
-sessionxyzBasket.sell( { 'currency': 'USD' }, (err, manifest) => {
-  if( err ) { return console.log(err) }
-
-  console.log("Payment Response:")
-  console.log(manifest.payment)
-})
+} catch (err) {
+  console.log(err)
+}
 ```
 
-### Example 2 (Manual payment-request) ES6
+Result:
+
+<img src="https://i.imgur.com/MocqM4o.png" />
+<img src="https://i.imgur.com/f8QqimE.png" />
+
+
+### Example 2 (Manual payment-request)
 
 In this example paypal-basket will craft the payment manifest,
 but it won't perform the actual payment request.
@@ -631,8 +455,8 @@ but it won't perform the actual payment request.
 Make sure ```norequest``` is *true*.
 
 ```javascript
-import paypal from 'paypal-rest-sdk'
-import { Basket, Product } from '@notixbit/paypal-basket'
+const paypal = require ('paypal-rest-sdk')
+const { Basket, Product } = require('@notixbit/paypal-basket')
 
 /* Configure external paypal sdk */
 paypal.configure({
@@ -642,21 +466,20 @@ paypal.configure({
 })
 
 /* Some sample products */
-
-let demoProduct1 = new Product({
+const demoProduct1 = new Product({
   sku: 'demoproduct1',
   name: 'Demo Product 1',
   price: 15.00
 })
 
-let demoProduct2 = new Product({
+const demoProduct2 = new Product({
   sku: 'demoproduct2',
   name: 'Demo Product 2',
   price: 6.53
 })
 
 /* Create a basket (eg. for a customer) */
-let demoBasket = new Basket({
+const demoBasket = new Basket({
   label: 'Demo Basket',
   urls: {
     return_url: 'http://return.url',
@@ -664,9 +487,8 @@ let demoBasket = new Basket({
   }
 })
 
-
 /* 
-  Add our demo products
+  Add the demo products
 */
 demoBasket.add(demoProduct1)
 demoBasket.add(demoProduct2)
@@ -678,20 +500,14 @@ console.log('Current total is: $' + demoBasket.total)
   Now sell the basket (generate manifest)
   and perform actual payment request with external paypal sdk
 */
-
-/* Promise invocation */
-demoBasket.sell({ 
-  currency: 'USD', norequest: true
-})
-.then( manifest => {
-  paypal.payment.create(manifest, (error, payment) => {
-    if(error){ throw error }
-
-    console.log("Payment Response:")
-    console.log(payment)
-  })
-})
-.catch( err => console.log(err))
+try {
+  const manifest = await demoBasket.sell({ currency: 'USD', norequest: true })
+  const payment = await paypal.payment.create(manifest)
+  console.log("Payment Response:")
+  console.log(payment)
+} catch (err) {
+  console.log(err)
+}
 ```
 
 ---
@@ -701,28 +517,7 @@ demoBasket.sell({
 Use `npm install @notixbit/paypal-basket` 
 
 ```javascript
-//=> ES6
-import { Paypal, Basket, Product } from '@notixbit/paypal-basket'
-
-/*
-  Configure paypal SDK
-  Grab your developer details here:
-  https://developer.paypal.com/
-*/
-Paypal.configure({
-  mode: 'sandbox',
-  client_id: '',
-  client_secret: ''
-})
-
-/* Now check examples above */
-
-//-------------------
-
-//=> ES5
-var Paypal = require('@notixbit/paypal-basket').Paypal
-  , Basket = require('@notixbit/paypal-basket').Basket
-  , Product = require('@notixbit/paypal-basket').Product
+const { Paypal, Basket, Product } = require('@notixbit/paypal-basket')
 
 /*
   Configure paypal SDK
@@ -737,18 +532,6 @@ Paypal.configure({
 
 /* Now check examples above */
 ```
-
----
-
-## Build
-
-### Make
-
-```make build```
-
-### NPM
-
-```npm run build```
 
 ---
 
@@ -762,7 +545,7 @@ Various tests are performed to make sure this module runs as smoothly as possibl
 
 Output using [Mocha](https://github.com/mochajs/mocha) `spec` reporter:   
 
-<img src="http://i.imgur.com/kYxdF5q.png" />
+<img src="https://i.imgur.com/kYxdF5q.png" />
 
 Default reporter: `list`
 
