@@ -23,8 +23,8 @@
 *
 */
 
-import { expect } from 'chai';
-import { Basket, Product } from '../lib/main'
+const { expect } = require('chai');
+const { Basket, Product } = require('../lib/main')
 
 let basket = undefined;
 let product = undefined;
